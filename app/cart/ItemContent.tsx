@@ -6,12 +6,14 @@ import Link from "next/link";
 import { trancateText } from "@/utils/trancateText";
 import Image from "next/image";
 import SetQuantity from "../components/products/SetQuantity";
+import { useCart } from "@/hooks/useCart";
 
 interface ItemContentProps {
   item: CartProductType;
 }
 
 const ItemContent: React.FC<ItemContentProps> = ({ item }) => {
+  const { handleRemoveProductFromCart } = useCart();
   return (
     <div
       className="
@@ -49,7 +51,10 @@ const ItemContent: React.FC<ItemContentProps> = ({ item }) => {
           <Link href={`/product/${item.id}`}>{trancateText(item.name)}</Link>
           <div>{item.selectedImg.color}</div>
           <div className="w-[70px]">
-            <button className="text-slate-500 underline" onClick={() => {}}>
+            <button
+              className="text-slate-500 underline"
+              onClick={() => handleRemoveProductFromCart(item)}
+            >
               Remove
             </button>
           </div>
