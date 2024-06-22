@@ -46,7 +46,7 @@ const ProductImage: React.FC<ProductImageProps> = ({
               className={`relative w-[80%] aspect-square rounded border-teal-300
             ${
               cartProduct.selectedImg.color === image.color
-                ? "border-[1.5px"
+                ? "border-[1.5]px"
                 : "border-none"
             }
             `}
