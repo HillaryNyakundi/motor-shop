@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description: "Buy your new car",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;

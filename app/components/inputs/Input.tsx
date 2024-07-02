@@ -53,7 +53,8 @@ const Input: React.FC<InputProps> = ({
       cursor-text
       text-md
       duration-150
-      -transform-y-3
+      transform
+      -translate-y-3
       top-5
       z-10
       origin-[0]
