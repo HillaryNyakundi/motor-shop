@@ -42,10 +42,25 @@ export const CartContextProvider = (props: Props) => {
     const motorShopPaymentIntent: any = localStorage.getItem(
       "motorShopPaymentIntent"
     );
-    const paymentIntent: string | null = JSON.parse(motorShopPaymentIntent);
+
+    // Check if motorShopPaymentIntent is valid JSON
+    let pIntent: string | null = null;
+    if (motorShopPaymentIntent) {
+      try {
+        pIntent = JSON.parse(motorShopPaymentIntent);
+      } catch (error) {
+        console.error(
+          "Failed to parse payment intent from localStorage:",
+          error
+        );
+      }
+    }
 
     setCartProducts(cProducts);
-    setPaymentIntent(paymentIntent);
+    setPaymentIntent(pIntent);
+
+    console.log("Loaded cart products from localStorage:", cProducts);
+    console.log("Loaded payment intent from localStorage:", pIntent);
   }, []);
 
   useEffect(() => {
